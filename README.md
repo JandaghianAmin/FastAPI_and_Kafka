@@ -125,9 +125,9 @@ if __name__ == "__main__":
 To run the application, use:
 
 
-
+```
 python consumer.py
 python producer.py
-
+```
 
 
