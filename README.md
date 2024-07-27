@@ -48,7 +48,7 @@ pip install fastapi uvicorn confluent-kafka
 # Step 3: Creating the FastAPI Application
 We'll create a FastAPI application with an endpoint to produce messages to Kafka and a background task to consume messages from Kafka.
 
-1. Producer Endpoint
+1. Producer Endpoint (producer.py)
 
 ```   
 from fastapi import FastAPI, HTTPException
@@ -83,7 +83,7 @@ if __name__ == "__main__":
   ```
 
 
-2. Consumer Background Task
+2. Consumer Background Task  (consumer.py)
 Add a background task to consume messages.
 
 
