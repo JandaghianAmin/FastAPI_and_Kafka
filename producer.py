@@ -1,9 +1,24 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from confluent_kafka import Producer
 import uvicorn
+from datetime import datetime
 
 app = FastAPI()
+
+@app.middleware("http")
+async def log_request_details(request: Request, call_next):
+    method_name = request.method
+    path = request.url.path
+    with open("request_log.txt", mode="a") as reqfile:
+        content = f"Method: {method_name}, Path: {path}, Received at: {datetime.now()}\n"
+        reqfile.write(content)
+    
+    response = await call_next(request)
+    return response
+
+
+
 
 # Kafka producer configuration
 producer_conf = {
