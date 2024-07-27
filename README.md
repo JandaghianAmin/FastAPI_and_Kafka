@@ -1,11 +1,11 @@
-We'll build a simple example where a FastAPI application produces messages to a Kafka topic and another part of the application consumes those messages.
+
 
 Prerequisites
 Python 3.8+
 Kafka Broker (e.g., local installation or Docker)
 Kafka Python Client Libraries (confluent-kafka for producer and consumer)
 
-Step 1: Setting Up Kafka
+# Step 1: Setting Up Kafka
 First, you need a running Kafka broker. You can use Docker to quickly set up a Kafka broker.
 
 Docker Compose File (docker-compose.yml):
@@ -39,13 +39,13 @@ docker-compose up -d
 
 ```
 
-Step 2: Installing Required Libraries
+# Step 2: Installing Required Libraries
 Install FastAPI, Uvicorn (ASGI server), and Confluent Kafka Python library.
 ```
 pip install fastapi uvicorn confluent-kafka
 ```
 
-Step 3: Creating the FastAPI Application
+# Step 3: Creating the FastAPI Application
 We'll create a FastAPI application with an endpoint to produce messages to Kafka and a background task to consume messages from Kafka.
 
 1. Producer Endpoint
@@ -57,7 +57,7 @@ import uvicorn
 
 app = FastAPI()
 
-# Kafka producer configuration
+
 producer_conf = {
     'bootstrap.servers': 'localhost:9092'
 }
@@ -88,7 +88,7 @@ Add a background task to consume messages.
 import asyncio
 from confluent_kafka import Consumer, KafkaException
 
-# Kafka consumer configuration
+
 consumer_conf = {
     'bootstrap.servers': 'localhost:9092',
     'group.id': 'my_group',
@@ -120,8 +120,11 @@ if __name__ == "__main__":
     loop.run_until_complete(consume_messages())
 
 ```
-Step 4: Running the Application
+
+# Step 4: Running the Application
 To run the application, use:
+
+
 ```
 python consumer.py
 python producer.py
