@@ -50,7 +50,6 @@ We'll create a FastAPI application with an endpoint to produce messages to Kafka
 
 1. Producer Endpoint
    
-   ```
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from confluent_kafka import Producer
@@ -80,14 +79,13 @@ async def produce_message(message: Message):
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
-  ```
+  
 
 
 2. Consumer Background Task
 Add a background task to consume messages.
 
 
-```
 import asyncio
 from confluent_kafka import Consumer, KafkaException
 
@@ -121,7 +119,6 @@ async def consume_messages():
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     loop.run_until_complete(consume_messages())
-```
 
 
 # Step 4: Running the Application
